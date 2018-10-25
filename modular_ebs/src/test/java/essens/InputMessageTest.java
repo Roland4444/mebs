@@ -10,8 +10,12 @@ class InputMessageTest {
     void saveMessageToBytes() {
         var inpMessage = new InputMessage("000.wav", "00".getBytes(), "voice", "http");
         var restoredBytes = InputMessage.saveMessageToBytes(inpMessage);
-        var restoredMsg = InputMessage.restoreBytesToAny(restoredBytes);
+        var restoredMsg = InputMessage.restoreBytesToInputMessage(restoredBytes);
         assertEquals(restoredMsg.Address, inpMessage.Address);
+        assertEquals(restoredMsg.DescriptionService, inpMessage.DescriptionService);
+        assertEquals(restoredMsg.FileName, inpMessage.FileName);
+        assertEquals(new String(restoredMsg.fileContent), new String(inpMessage.fileContent));
+
 
     }
 }

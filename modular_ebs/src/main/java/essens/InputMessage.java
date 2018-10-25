@@ -35,7 +35,7 @@ public class InputMessage implements Serializable {
             return Result;
     }
 
-    public static InputMessage restoreBytesToAny(byte[] input){
+    public static InputMessage restoreBytesToInputMessage(byte[] input){
             Object o=null;
             ByteArrayInputStream bis = new ByteArrayInputStream(input);
             ObjectInput in = null;
