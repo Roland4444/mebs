@@ -4,7 +4,6 @@ import essens.InputMessage;
 import essens.ResponceMessage;
 import impl.JAktor;
 import jni_impl.RawImplements.callEBS_sound;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,5 +25,12 @@ public class Service_JAKtor extends JAktor {
         var result = cebs.call_ebs(this.config, shortname);
         var resp = new ResponceMessage(result.checkResult, result.lastErrorInSession, result.ResultLoadingSoSymbols);
         send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        var  la1=new Service_JAKtor();
+        la1.setAddress("http://127.0.0.1:12121/");
+        la1.setConfig("./cv_configuration.json");
+        la1.spawn();
     }
 }
