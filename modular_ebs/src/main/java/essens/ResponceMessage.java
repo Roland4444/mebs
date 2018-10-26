@@ -2,15 +2,17 @@ package essens;
 
 import java.io.*;
 
-public class ResponceMessage {
-    public ResponceMessage(int checkResult,  int lastErrorInSession, int ResultLoadingSoSymbols){
+public class ResponceMessage implements Serializable{
+    public ResponceMessage(int checkResult,  int lastErrorInSession, int ResultLoadingSoSymbols, String ID){
         this.checkResult=checkResult;
         this.lastErrorInSession=lastErrorInSession;
         this.ResultLoadingSoSymbols=ResultLoadingSoSymbols;
+        this.ID=ID;
     }
     public int checkResult;
     public int lastErrorInSession;
     public int ResultLoadingSoSymbols;
+    public String ID;
 
     public static  byte[] saveMessageToBytes(ResponceMessage inp){
         byte[] Result=null ;

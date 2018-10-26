@@ -19,12 +19,22 @@ public class Service_JAKtor extends JAktor {
         var inputMsg = InputMessage.restoreBytesToInputMessage(message);
         var filename = inputMsg.FileName;
         var shortname = new File(filename).getName();
-        FileOutputStream fos=new FileOutputStream(new File(filename).getName());
+        var ID = inputMsg.ID;
+        FileOutputStream fos=new FileOutputStream(shortname);
         fos.write(inputMsg.fileContent);
         fos.close();
-        var result = cebs.call_ebs(this.config, shortname);
-        var resp = new ResponceMessage(result.checkResult, result.lastErrorInSession, result.ResultLoadingSoSymbols);
+        callEBS_sound.CLibrary.ResultCheck rc = new callEBS_sound.CLibrary.ResultCheck();
+        rc = cebs.call_ebs("./cv_configuration.json", shortname);
+        System.out.print("RESULT OPRATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
+        var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
+        System.out.println("SENDING REPLY to"+ inputMsg.Address);
         send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+        System.out.println("SEND complete");
+
+
+
+
+
     }
 
     public static void main(String[] args) throws InterruptedException {
