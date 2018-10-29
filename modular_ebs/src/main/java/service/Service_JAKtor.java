@@ -4,15 +4,21 @@ import essens.InputMessage;
 import essens.ResponceMessage;
 import impl.JAktor;
 import jni_impl.RawImplements.callEBS_sound;
+import jni_impl.RawImplements.callebs_photo;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Service_JAKtor extends JAktor {
-    callEBS_sound cebs = new callEBS_sound();
-    String config;
-    public void setConfig(String filename){
-        this.config=filename;
+    callEBS_sound cebs_v = new callEBS_sound();
+    callebs_photo cebs_i = new callebs_photo();
+    String configVoice, configPhoto;
+    public void setConfigVoice(String filename){
+        this.configVoice =filename;
+    }
+    public void setconfigPhoto(String filename){
+        this.configPhoto =filename;
     }
     @Override
     public void receive(byte[] message) throws IOException {
@@ -23,13 +29,32 @@ public class Service_JAKtor extends JAktor {
         FileOutputStream fos=new FileOutputStream(shortname);
         fos.write(inputMsg.fileContent);
         fos.close();
-        callEBS_sound.CLibrary.ResultCheck rc = new callEBS_sound.CLibrary.ResultCheck();
-        rc = cebs.call_ebs("./cv_configuration.json", shortname);
-        System.out.print("RESULT OPRATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
-        var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
-        System.out.println("SENDING REPLY to"+ inputMsg.Address);
-        send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
-        System.out.println("SEND complete");
+        switch (inputMsg.DescriptionService){
+            case "voice": {
+                System.out.println("CHECKING SOUND");
+                var rc = cebs_v.call_ebs(configVoice, shortname);
+                System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
+                var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
+                System.out.println("SENDING REPLY to"+ inputMsg.Address);
+                send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+                System.out.println("SEND complete");
+            }; break;
+            case "photo":{
+                System.out.println("CHECKING PHOTO");
+                var rc = cebs_i.call_ebs_photo(configPhoto, shortname);
+                System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
+                var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
+                System.out.println("SENDING REPLY to"+ inputMsg.Address);
+                send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+                System.out.println("SEND complete");
+            }; break;
+            default:{
+                var resp = new ResponceMessage(-1, -1, -1, ID);
+                send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+                System.out.println("SEND complete");
+            }
+        }
+
 
 
 
@@ -40,7 +65,7 @@ public class Service_JAKtor extends JAktor {
     public static void main(String[] args) throws InterruptedException {
         var  la1=new Service_JAKtor();
         la1.setAddress("http://127.0.0.1:12121/");
-        la1.setConfig("./cv_configuration.json");
+        la1.setConfigVoice("./cv_configuration.json");
         la1.spawn();
     }
 }
