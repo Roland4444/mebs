@@ -14,7 +14,7 @@ public class Service_JAKtor extends JAktor {
     callEBS_sound cebs_v = new callEBS_sound();
     callebs_photo cebs_i = new callebs_photo();
     String configVoice, configPhoto;
-    public void setConfigVoice(String filename){
+    public void setconfigVoice(String filename){
         this.configVoice =filename;
     }
     public void setconfigPhoto(String filename){
@@ -65,7 +65,8 @@ public class Service_JAKtor extends JAktor {
     public static void main(String[] args) throws InterruptedException {
         var  la1=new Service_JAKtor();
         la1.setAddress("http://127.0.0.1:12121/");
-        la1.setConfigVoice("./cv_configuration.json");
+        la1.setconfigVoice("./cv_configuration.json");
+        la1.setconfigPhoto("./ci_configuration.json");
         la1.spawn();
     }
 }
