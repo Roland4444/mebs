@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TablesEBSCheck {
+    public final String voice = "voice";
+    public final String photo = "photo";
     public Map<Integer, String> onLoadLibraryErrors;
     public TablesEBSCheck(){
         onLoadLibraryErrors=new HashMap<>();

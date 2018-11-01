@@ -1,5 +1,6 @@
 package jni_impl.RawImplements;
 
+import essens.TablesEBSCheck;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class callebs_photoTest {
-    callebs_photo cebs = new callebs_photo();
+    callebs_photo cebs = new callebs_photo(new TablesEBSCheck());
 
     @Test
     public void call_ebs() throws InterruptedException, IOException {
@@ -28,7 +29,7 @@ class callebs_photoTest {
 
     @Test
     public void call_ebs1() {
-        callEBS_sound ebs = new callEBS_sound();
+        callEBS_sound ebs = new callEBS_sound(new TablesEBSCheck());
         assertNotEquals(null, ebs);
     }
 }

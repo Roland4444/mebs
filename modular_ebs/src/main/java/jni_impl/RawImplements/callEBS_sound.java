@@ -15,7 +15,8 @@ import java.util.Map;
 public class callEBS_sound {
     public TablesEBSCheck tebs = new TablesEBSCheck();
     public Map<Integer, String> onLoadLibraryErrors;
-    public callEBS_sound(){
+    public callEBS_sound(TablesEBSCheck inp){
+        this.tebs = inp;
         onLoadLibraryErrors = tebs.onLoadLibraryErrors;
     }
     public interface CLibrary extends Library {

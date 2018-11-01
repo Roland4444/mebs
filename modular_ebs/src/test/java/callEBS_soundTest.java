@@ -1,3 +1,4 @@
+import essens.TablesEBSCheck;
 import jni_impl.RawImplements.callEBS_sound;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class callEBS_soundTest {
-    callEBS_sound cebs = new callEBS_sound();
+    callEBS_sound cebs = new callEBS_sound(new TablesEBSCheck());
     @Test
     public void call_ebs() throws InterruptedException, IOException {
 
@@ -31,7 +32,7 @@ class callEBS_soundTest {
 
     @Test
     public void call_ebs1() {
-        callEBS_sound ebs = new callEBS_sound();
+        callEBS_sound ebs = new callEBS_sound(new TablesEBSCheck());
         assertNotEquals(null, ebs);
     }
 
