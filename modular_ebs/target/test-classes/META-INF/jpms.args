@@ -1,0 +1,4 @@
+--patch-module
+se.roland.ebs=_
+--add-reads
+se.roland.ebs=ALL-UNNAMED

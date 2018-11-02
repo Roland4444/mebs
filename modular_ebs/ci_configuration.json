@@ -1,0 +1,106 @@
+{
+  "model": {
+    "path": "model/main_clnf_general.txt"
+  },
+  "classifiers": {
+    "path": "classifiers/haarcascade_frontalface_alt.xml"
+  },
+  "length": {
+    "maximum": 100000,
+    "minimum": 500,
+    "enable": true
+  },
+  "head_horizontal_size": {
+    "maximum": 0.75,
+    "minimum": 0.5,
+    "enable": true
+  },
+  "head_vertical_size": {
+    "maximum": 0.9,
+    "minimum": 0.6,
+    "enable": true
+  },
+  "face_horizontal_position": {
+    "maximum": 0.55,
+    "minimum": 0.45,
+    "enable": true
+  },
+  "face_vertical_position": {
+    "maximum": 0.5,
+    "minimum": 0.3,
+    "enable": true
+  },
+  "width": {
+    "maximum": 4096,
+    "minimum": 640,
+    "enable": true
+  },
+  "height": {
+    "maximum": 4096,
+    "minimum": 480,
+    "enable": true
+  },
+  "channels": {
+    "maximum": 5,
+    "minimum": 1,
+    "enable": true
+  },
+  "depth": {
+    "maximum": 32,
+    "minimum": 8,
+    "enable": true
+  },
+  "head_rx": {
+    "maximum": 5,
+    "minimum": 0,
+    "enable": true
+  },
+  "head_ry": {
+    "maximum": 5,
+    "minimum": 0,
+    "enable": true
+  },
+  "head_rz": {
+    "maximum": 8,
+    "minimum": 0,
+    "enable": true
+  },
+  "eyes_distance": {
+    "maximum": 4096,
+    "minimum": 120,
+    "enable": true
+  },
+  "blur_max": {
+    "value": 0.85,
+    "enable": true
+  },
+  "light_max": {
+    "value": 0.85,
+    "enable": true
+  },
+  "dark_max": {
+    "value": 0.85,
+    "enable": true
+  },
+  "mouth threshold": {
+    "value": 0.67,
+    "enable": true
+  },
+  "suspicious_threshold": {
+    "value": 0.8,
+    "enable": true
+  },
+  "margin_min": {
+    "value": 20,
+    "enable": true
+  },
+  "check_eyes": {
+    "enable": true
+  },
+  "check_eye_liveness": {
+    "enable": false
+  },
+  "check_mouth": {
+    "enable": false
+  }
+}
