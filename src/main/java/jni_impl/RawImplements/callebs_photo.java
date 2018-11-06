@@ -38,7 +38,7 @@ public class callebs_photo {
                 return Arrays.asList(new String[] { "checkResult", "lastErrorInSession","ResultLoadingSoSymbols" });
 
             }
-            public static class ByReference extends CLibrary.ResultCheck implements Structure.ByReference {}
+            public static class ByReference extends ResultCheck implements Structure.ByReference {}
             public int checkResult;
             public int lastErrorInSession;
             public int ResultLoadingSoSymbols;
@@ -47,7 +47,7 @@ public class callebs_photo {
 
 
         CLibrary INSTANCE = (CLibrary) Native.loadLibrary(("sek"), CLibrary.class);
-        CLibrary.ResultCheck lets_check(String config, String filename);
+        ResultCheck lets_check(String config, String filename);
 
     }
     public CLibrary.ResultCheck call_ebs_photo(String config, String filename) throws IOException {

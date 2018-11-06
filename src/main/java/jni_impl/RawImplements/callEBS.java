@@ -23,7 +23,7 @@ public class callEBS {
                 return Arrays.asList(new String[] { "checkResult", "lastErrorInSession","ResultLoadingSoSymbols" });
 
             }
-            public static class ByReference extends CLibrary.ResultCheck implements Structure.ByReference {}
+            public static class ByReference extends ResultCheck implements Structure.ByReference {}
             public int checkResult;
             public int lastErrorInSession;
             public int ResultLoadingSoSymbols;
