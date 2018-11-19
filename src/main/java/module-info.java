@@ -1,5 +1,6 @@
-open module uk.roland.ebs{
+open module se.roland.ebs{
     exports essens;
-    requires uk.roland.jaktor;
+    requires se.roland.jaktor;
     requires jna;
+
 }

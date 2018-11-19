@@ -16,7 +16,7 @@ class callebs_photoTest {
         var rc = cebs.call_ebs_photo("./ci_configuration.json", "/home/roland/Downloads/.build_l64/tests_data/photo/photo-9fN3XP0T.jpg");
 
         assertEquals(rc.lastErrorInSession, 0);
-
+        printEBS(rc);
     }
 
     void printEBS(callebs_photo.CLibrary.ResultCheck rc) {
