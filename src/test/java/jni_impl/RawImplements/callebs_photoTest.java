@@ -1,6 +1,6 @@
 package jni_impl.RawImplements;
 
-import essens.TablesEBSCheck;
+import Table.TablesEBSCheck;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -32,4 +32,8 @@ class callebs_photoTest {
         callEBS_sound ebs = new callEBS_sound(new TablesEBSCheck());
         assertNotEquals(null, ebs);
     }
+
+
+
+
 }

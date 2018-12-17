@@ -1,8 +1,9 @@
 package service;
 
-import essens.InputMessage;
-import essens.ResponceMessage;
-import essens.TablesEBSCheck;
+
+import Message.BKKCheck.InputMessage;
+import Message.BKKCheck.ResponceMessage;
+import Table.TablesEBSCheck;
 import impl.JAktor;
 import jni_impl.RawImplements.callEBS_sound;
 import jni_impl.RawImplements.callebs_photo;
@@ -45,7 +46,8 @@ public class Service_JAKtor extends JAktor {
                 System.out.println("CHECKING PHOTO");
                 var rc = cebs_i.call_ebs_photo(configPhoto, shortname);
                 System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
-                var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
+           ////////////    var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
+                var resp = new ResponceMessage(0, 0, 0, ID);
                 System.out.println("SENDING REPLY to"+ inputMsg.Address);
                 send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
                 System.out.println("SEND complete");

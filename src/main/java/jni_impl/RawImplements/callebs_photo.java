@@ -1,23 +1,15 @@
 package jni_impl.RawImplements;
 
+import Table.TablesEBSCheck;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Structure;
-import essens.TablesEBSCheck;
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-import com.sun.jna.Structure;
-import essens.TablesEBSCheck;
+
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Arrays;
+
 import java.util.List;
 import java.util.Map;
 

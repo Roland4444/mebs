@@ -1,4 +1,5 @@
-import essens.TablesEBSCheck;
+
+import Table.TablesEBSCheck;
 import jni_impl.RawImplements.callEBS_sound;
 import org.junit.jupiter.api.Test;
 
