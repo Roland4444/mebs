@@ -3,6 +3,7 @@ package service;
 
 import Message.BKKCheck.InputMessage;
 import Message.BKKCheck.ResponceMessage;
+import Message.abstractions.BinaryMessage;
 import Table.TablesEBSCheck;
 import impl.JAktor;
 import jni_impl.RawImplements.callEBS_sound;
@@ -25,7 +26,7 @@ public class Service_JAKtor extends JAktor {
     }
     @Override
     public void receive(byte[] message) throws IOException {
-        var inputMsg = InputMessage.restoreBytesToInputMessage(message);
+        InputMessage inputMsg = (InputMessage) BinaryMessage.restored(message);
         var filename = inputMsg.FileName;
         var shortname = new File(filename).getName();
         var ID = inputMsg.ID;
@@ -38,7 +39,7 @@ public class Service_JAKtor extends JAktor {
                 System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
                 var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
                 System.out.println("SENDING REPLY to"+ inputMsg.Address);
-                send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+                send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
                 System.out.println("SEND complete");
                 return;
         };
@@ -49,13 +50,13 @@ public class Service_JAKtor extends JAktor {
            ////////////    var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
                 var resp = new ResponceMessage(0, 0, 0, ID);
                 System.out.println("SENDING REPLY to"+ inputMsg.Address);
-                send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+                send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
                 System.out.println("SEND complete");
                 return;
         }
 
         var resp = new ResponceMessage(-1, -1, -1, ID);
-        send(ResponceMessage.saveMessageToBytes(resp), inputMsg.Address);
+        send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
         System.out.println("Wrong pseudo  => SEND complete");
     }
 
