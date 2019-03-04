@@ -1,41 +1,45 @@
 package jni_impl.RawImplements;
-
-import Table.TablesEBSCheck;
+import com.sun.jna.Callback;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
-import com.sun.jna.Structure;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 public class callEBS {
-    public TablesEBSCheck tebs = new TablesEBSCheck();
-    public Map<Integer, String> onLoadLibraryErrors;
-    public callEBS(){
-        onLoadLibraryErrors = tebs.onLoadLibraryErrors;
-    }
+
     public interface CLibrary extends Library {
-        public static class ResultCheck extends Structure {
-            @Override
-            protected List<String> getFieldOrder() {
-                return Arrays.asList(new String[] { "checkResult", "lastErrorInSession","ResultLoadingSoSymbols" });
+        public static final CLibrary INSTANCE = (CLibrary) Native.loadLibrary("universal", CLibrary.class);
+        public interface void__ extends Callback {
+            void apply();
+        };
 
-            }
-            public static class ByReference extends ResultCheck implements Structure.ByReference {}
-            public int checkResult;
-            public int lastErrorInSession;
-            public int ResultLoadingSoSymbols;
-
-        }
-
-
-        CLibrary INSTANCE = (CLibrary) Native.loadLibrary(("GBP"), CLibrary.class);
-        ResultCheck lets_check(String config, String filename);
-
+        void__ initGlobal() ;
+        int  checkFileGlobal(String filename) ;
     }
-    CLibrary.ResultCheck call_ebs(String config, String filename){
-        return CLibrary.INSTANCE.lets_check( config,  filename);
+
+    CLibrary.void__ init(){
+        return CLibrary.INSTANCE.initGlobal();
+    };
+
+    int checkfile(String filename){
+        return CLibrary.INSTANCE.checkFileGlobal(filename);
+    };
+
+    void foreach(String input) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(input));
+        String line;
+        while ((line = br.readLine()) != null) {
+            checkfile(line);
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+        var checker = new callEBS();
+        checker.init();
+        for(int i=0;i<args.length;i++)
+            checker.foreach(args[i]);
     }
 
 

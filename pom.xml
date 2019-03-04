@@ -12,6 +12,7 @@
     <artifactId>modular_ebs</artifactId>
     <version>1.5it-SNAPSHOT</version>
     <dependencies>
+
         <dependency>
             <groupId>uk.roland</groupId>
             <artifactId>Messaging</artifactId>
@@ -33,6 +34,7 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
