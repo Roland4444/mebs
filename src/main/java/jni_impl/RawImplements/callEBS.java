@@ -23,11 +23,11 @@ public class callEBS {
         return CLibrary.INSTANCE.initGlobal();
     };
 
-    int checkfile(String filename){
+    public int checkfile(String filename){
         return CLibrary.INSTANCE.checkFileGlobal(filename);
     };
 
-    void foreach(String input) throws IOException {
+    public void foreach(String input) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(input));
         String line;
