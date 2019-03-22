@@ -33,27 +33,7 @@ public class Service_JAKtor extends JAktor {
         FileOutputStream fos=new FileOutputStream(shortname);
         fos.write(inputMsg.fileContent);
         fos.close();
-        if (inputMsg.DescriptionService.equals(tebs.voice)) {
-                System.out.println("CHECKING SOUND");
-                var rc = cebs_v.call_ebs(configVoice, shortname);
-                System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
-                var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
-                System.out.println("SENDING REPLY to"+ inputMsg.Address);
-                send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
-                System.out.println("SEND complete");
-                return;
-        };
-        if (inputMsg.DescriptionService.equals(tebs.photo)) {
-                System.out.println("CHECKING PHOTO");
-                var rc = cebs_i.call_ebs_photo(configPhoto, shortname);
-                System.out.print("RESULT OPERATION =>{"+rc.checkResult+","+rc.lastErrorInSession+","+rc.ResultLoadingSoSymbols+"}");
-                var resp = new ResponceMessage(rc.checkResult, rc.lastErrorInSession, rc.ResultLoadingSoSymbols, ID);
-            //    var resp = new ResponceMessage(0, 0, 0, ID);
-                System.out.println("SENDING REPLY to"+ inputMsg.Address);
-                send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
-                System.out.println("SEND complete");
-                return;
-        }
+
 
         var resp = new ResponceMessage(-1, -1, -1, ID);
         send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
