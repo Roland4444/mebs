@@ -16,6 +16,9 @@ public class Service_JAKtor extends JAktor {
     TablesEBSCheck tebs = new TablesEBSCheck();
     callEBS checker = new callEBS();
     String configVoice, configPhoto;
+    public Service_JAKtor(){
+        checker.init();
+    }
     public void setconfigVoice(String filename){
         this.configVoice =filename;
     }
@@ -32,7 +35,6 @@ public class Service_JAKtor extends JAktor {
 
         var resp = new ResponceMessage(checker.checkfile(inputMsg.FileName), -1, -1, ID);
         send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
-        System.out.println("Wrong pseudo  => SEND complete");
         new File(inputMsg.FileName).delete();
     }
 
