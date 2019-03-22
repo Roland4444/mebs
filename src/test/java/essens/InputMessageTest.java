@@ -14,7 +14,6 @@ class InputMessageTest {
         var restoredBytes = BinaryMessage.savedToBLOB(inpMessage);
         InputMessage restoredMsg = (InputMessage) BinaryMessage.restored(restoredBytes);
         assertEquals(restoredMsg.Address, inpMessage.Address);
-        assertEquals(restoredMsg.DescriptionService, inpMessage.DescriptionService);
         assertEquals(restoredMsg.FileName, inpMessage.FileName);
         assertEquals(new String(restoredMsg.fileContent), new String(inpMessage.fileContent));
 
