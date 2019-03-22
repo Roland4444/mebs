@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 public class callEBS {
-    int i = 0;
+
     public interface CLibrary extends Library {
         public static final CLibrary INSTANCE = (CLibrary) Native.loadLibrary("universal", CLibrary.class);
         public interface void__ extends Callback {
@@ -19,20 +19,20 @@ public class callEBS {
         int  checkFileGlobal(String filename) ;
     }
 
-    CLibrary.void__ init(){
+    public CLibrary.void__ init(){
         return CLibrary.INSTANCE.initGlobal();
     };
 
-    int checkfile(String filename){
+    public int checkfile(String filename){
         return CLibrary.INSTANCE.checkFileGlobal(filename);
     };
 
-    void foreach(String input) throws IOException {
+    public void foreach(String input) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(input));
         String line;
         while ((line = br.readLine()) != null) {
-            System.out.println(i+++"\t");
+
             checkfile(line);
         }
     }
