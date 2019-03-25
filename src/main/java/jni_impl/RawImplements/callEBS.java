@@ -10,17 +10,27 @@ import java.io.IOException;
 public class callEBS {
 
     public interface CLibrary extends Library {
-        public static final CLibrary INSTANCE = (CLibrary) Native.loadLibrary("universal", CLibrary.class);
+        public static final CLibrary INSTANCE = (CLibrary) Native.loadLibrary("nosess", CLibrary.class);
         public interface void__ extends Callback {
             void apply();
         };
 
         void__ initGlobal() ;
         int  checkFileGlobal(String filename) ;
+        void foreachGlobal(String filename);
+        int lets_check(String filename);
     }
 
-    public CLibrary.void__ init(){
-        return CLibrary.INSTANCE.initGlobal();
+    public int lets_check(String f){
+       return CLibrary.INSTANCE.lets_check(f);
+    };
+
+    public void callForeach(String f){
+        CLibrary.INSTANCE.foreachGlobal(f);
+    };
+
+    public void init(){
+        CLibrary.INSTANCE.initGlobal();
     };
 
     public int checkfile(String filename){
@@ -41,9 +51,10 @@ public class callEBS {
         long startTime = System.currentTimeMillis();
         var checker = new callEBS();
         checker.init();
-        checker.foreach("input");
-        for(int i=0;i<args.length;i++)
-            checker.foreach(args[i]);
+        checker.callForeach("wav");
+       // checker.foreach("wav");
+      //  for(int i=0;i<args.length;i++)
+       //     checker.foreach(args[i]);
 
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;

@@ -14,4 +14,10 @@ class callEBSTest {
         checker.init();
         checker.foreach("input");
     }
+
+    @Test
+    void lets_check() {
+        var checker = new callEBS();
+        assertEquals(0, checker.lets_check("/home/roland/Downloads/lol.wav"));
+    }
 }
