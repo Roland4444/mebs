@@ -285,25 +285,27 @@ int ret_3(){
 
 
 
-JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_summ
-  (JNIEnv* env, jobject thisObject, jint a, jint b){
+JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_summ(JNIEnv* env, jobject thisObject, jint a, jint b)
+{
     printf("CALCULATING SUMM\n\n\n");
     return a+b;
 	
 }
 
 
-JNIEXPORT void JNICALL Java_jni_1impl_EBSJNI_init
-  (JNIEnv* env, jobject thisObject){
+JNIEXPORT void JNICALL Java_jni_1impl_EBSJNI_init(JNIEnv* env, jobject thisObject)
+{
 	CheckerPtr = Checker__();
 }
 
 
 
-JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_checkFile
-  (JNIEnv* env, jobject thisObject, jstring filename){
-    const char *fn = (*env)->GetStringUTFChars(env,thisObject,0);
-	return lets_check(fn);
+JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_checkFile(JNIEnv* env, jobject thisObject, jstring filename)
+{
+  jboolean is_copy = (jboolean) JNI_FALSE;
+  const char *fn = (*env)->GetStringUTFChars(env, filename, &is_copy);;
+ // (*env)->ReleaseStringUTFChars(env, filename);
+  return lets_check(fn);
 }
 #endif
 
