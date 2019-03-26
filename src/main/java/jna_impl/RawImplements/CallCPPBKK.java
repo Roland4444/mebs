@@ -1,4 +1,4 @@
-package jni_impl.RawImplements;
+package jna_impl.RawImplements;
 
 
 import com.sun.jna.Library;
