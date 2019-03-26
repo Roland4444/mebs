@@ -302,7 +302,8 @@ JNIEXPORT void JNICALL Java_jni_1impl_EBSJNI_init
 
 JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_checkFile
   (JNIEnv* env, jobject thisObject, jstring filename){
-	return lets_check(filename);
+    const char *fn = (*env)->GetStringUTFChars(env,thisObject,0);
+	return lets_check(fn);
 }
 #endif
 
