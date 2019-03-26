@@ -300,6 +300,7 @@ JNIEXPORT void JNICALL Java_jni_1impl_EBSJNI_init(JNIEnv* env, jobject thisObjec
 
 
 
+
 JNIEXPORT jint JNICALL Java_jni_1impl_EBSJNI_checkFile(JNIEnv* env, jobject thisObject, jstring filename)
 {
   jboolean is_copy = (jboolean) JNI_FALSE;

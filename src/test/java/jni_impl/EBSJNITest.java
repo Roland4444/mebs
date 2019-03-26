@@ -10,5 +10,7 @@ class EBSJNITest {
     void summ() {
         var jni = new EBSJNI();
         assertEquals(3, jni.summ(2,1));
+        jni.init();
+        assertEquals(0, jni.checkFile("/home/roland/Downloads/lol.wav"));
     }
 }
