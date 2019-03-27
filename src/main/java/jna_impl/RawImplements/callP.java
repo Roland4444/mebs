@@ -8,6 +8,7 @@ public class callP {
         public static final callP.CLibrary INSTANCE = (callP.CLibrary) Native.loadLibrary("simple", callP.CLibrary.class);
         void init();
         void call();
+        int checkFile(byte[] content, long sizecontent);
 
     }
     public void init(){
@@ -15,5 +16,8 @@ public class callP {
     }
     public void call(){
         CLibrary.INSTANCE.call();
+    }
+    public  int checkFile(byte[] content, long sizecontent){
+        return CLibrary.INSTANCE.checkFile(content, content.length);
     }
 }
