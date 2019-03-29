@@ -10,6 +10,6 @@ class CallCPPBKKTest {
     void check() {
         var t = new CallCPPBKK();
         t.init();
-        assertEquals(0, t.check("/home/roland/Downloads/lol.wav"));
+        assertEquals(0, t.check("./lol2.wav"));
     }
 }
