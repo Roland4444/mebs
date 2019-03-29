@@ -50,8 +50,7 @@ public class callEBS {
     public static void main(String[] args) throws InterruptedException, IOException {
         long startTime = System.currentTimeMillis();
         var checker = new callEBS();
-        checker.init();
-        checker.callForeach("wav");
+        checker.lets_check("/home/roland/Downloads/lol.wav");
        // checker.foreach("wav");
       //  for(int i=0;i<args.length;i++)
        //     checker.foreach(args[i]);
