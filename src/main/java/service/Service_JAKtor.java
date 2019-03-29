@@ -6,7 +6,6 @@ import Table.TablesEBSCheck;
 import impl.JAktor;
 import jna_impl.RawImplements.CallCPPBKK;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Service_JAKtor extends JAktor {
