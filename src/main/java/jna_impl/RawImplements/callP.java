@@ -9,6 +9,7 @@ public class callP {
         void init();
         void call();
         int checkFile(byte[] content, long sizecontent);
+        int lets_check(String filename);
 
     }
     public void init(){
@@ -16,6 +17,9 @@ public class callP {
     }
     public void call(){
         CLibrary.INSTANCE.call();
+    }
+    public  int lets_check(byte[] content, long sizecontent){
+        return CLibrary.INSTANCE.checkFile(content, content.length);
     }
     public  int checkFile(byte[] content, long sizecontent){
         return CLibrary.INSTANCE.checkFile(content, content.length);

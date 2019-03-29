@@ -6,12 +6,19 @@ import Message.BKKCheck.ResponceMessage;
 import Message.abstractions.BinaryMessage;
 import Table.TablesEBSCheck;
 import impl.JAktor;
+import jna_impl.RawImplements.CallCPPBKK;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Service_JAKtor extends JAktor {
     TablesEBSCheck tebs = new TablesEBSCheck();
+    private CallCPPBKK Bkkwrapper;
+    public Service_JAKtor(){
+        this.Bkkwrapper = new CallCPPBKK();
+        Bkkwrapper.init();
+    };
 
     String configVoice, configPhoto;
     public void setconfigVoice(String filename){
@@ -26,14 +33,10 @@ public class Service_JAKtor extends JAktor {
         var filename = inputMsg.FileName;
         var shortname = new File(filename).getName();
         var ID = inputMsg.ID;
-        FileOutputStream fos=new FileOutputStream(shortname);
-        fos.write(inputMsg.fileContent);
-        fos.close();
-
-
-        var resp = new ResponceMessage(-1, -1, -1, ID);
+        BinaryMessage.write(inputMsg.fileContent, shortname);
+        var resp = new ResponceMessage(Bkkwrapper.check(filename), ID);
         send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
-        System.out.println("Wrong pseudo  => SEND complete");
+        new File(shortname).delete();
     }
 
     public static void main(String[] args) throws InterruptedException {
