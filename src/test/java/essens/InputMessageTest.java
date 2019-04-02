@@ -10,7 +10,7 @@ class InputMessageTest {
 
     @Test
     void saveMessageToBytes() {
-        var inpMessage = new InputMessage("000.wav", "00".getBytes(), "voice", "http", "00");
+        var inpMessage = new InputMessage("000.wav", "00".getBytes(), "http", "00");
         var restoredBytes = BinaryMessage.savedToBLOB(inpMessage);
         InputMessage restoredMsg = (InputMessage) BinaryMessage.restored(restoredBytes);
         assertEquals(restoredMsg.Address, inpMessage.Address);

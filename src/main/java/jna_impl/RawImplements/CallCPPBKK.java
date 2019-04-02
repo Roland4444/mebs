@@ -3,18 +3,20 @@ import com.sun.jna.Native;
 import com.sun.jna.Library;
 public class CallCPPBKK {
     public interface CLibrary extends Library {
-        public static final CallCPPBKK.CLibrary INSTANCE = (CallCPPBKK.CLibrary) Native.loadLibrary("sch", CallCPPBKK.CLibrary.class);
+        public static final CallCPPBKK.CLibrary INSTANCE = (CallCPPBKK.CLibrary) Native.loadLibrary("uk", CallCPPBKK.CLibrary.class);
 
-        void init();
-        int check(String filename);
+        void initGlobal();
+        int checkFileGlobal(String filename);
     }
 
     public void init(){
-        CLibrary.INSTANCE.init();
+        CLibrary.INSTANCE.initGlobal();
     }
 
     public int check(String Filename){
-        return CLibrary.INSTANCE.check(Filename);
+        int i = CLibrary.INSTANCE.checkFileGlobal(Filename);
+        System.out.println("RETURNED=>"+i);
+        return i;
     }
     
     public static void main(String[] args) {
