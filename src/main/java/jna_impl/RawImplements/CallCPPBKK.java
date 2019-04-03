@@ -22,7 +22,7 @@ public class CallCPPBKK {
     public static void main(String[] args) {
     	 var t = new CallCPPBKK();
          t.init();
-         System.out.println(t.check("/home/roland/Documents/chchecker/normal.wav"));
+         System.out.println(t.check("./o"));
         
     }
 }
