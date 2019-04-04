@@ -1,1 +1,4 @@
-JNI guide
+LC_NUMERIC=C
+
+
+locale must be to call throw JNA
