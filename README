@@ -2,3 +2,5 @@ LC_NUMERIC=C
 
 
 locale must be to call throw JNA
+
+Roadmap: ned return more informative message
