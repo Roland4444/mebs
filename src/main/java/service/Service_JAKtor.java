@@ -32,7 +32,7 @@ public class Service_JAKtor extends JAktor {
         BinaryMessage.write(inputMsg.fileContent, shortname);
         var resp = new ResponceMessage(Bkkwrapper.check(filename), ID);
         send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
-       // new File(shortname).delete();
+        new File(shortname).delete();
     }
 
     public static void main(String[] args) throws InterruptedException {
