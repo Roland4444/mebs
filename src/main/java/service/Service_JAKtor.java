@@ -30,8 +30,8 @@ public class Service_JAKtor extends JAktor {
         var shortname = new File(filename).getName();
         var ID = inputMsg.ID;
         BinaryMessage.write(inputMsg.fileContent, shortname);
-        var resp = new ResponceMessage(Bkkwrapper.check(filename), ID);
-        send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
+      //////////////////  var resp = new ResponceMessage(Bkkwrapper.check(filename), ID);
+        send(BinaryMessage.savedToBLOB(null), inputMsg.Address);
         //new File(shortname).delete();
     }
 
