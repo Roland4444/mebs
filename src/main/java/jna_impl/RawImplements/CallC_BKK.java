@@ -4,9 +4,9 @@ package jna_impl.RawImplements;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 
-public class CallCPPBKK {
+public class CallC_BKK {
     public interface CLibrary extends Library {
-        public static final CallCPPBKK.CLibrary INSTANCE = (CallCPPBKK.CLibrary) Native.loadLibrary("uk", CallCPPBKK.CLibrary.class);
+        public static final CallC_BKK.CLibrary INSTANCE = (CallC_BKK.CLibrary) Native.loadLibrary("uk", CallC_BKK.CLibrary.class);
 
         void initGlobal();
         int checkFileGlobal(String filename);
@@ -38,7 +38,7 @@ public class CallCPPBKK {
     }
     
     public static void main(String[] args) {
-    	 var t = new CallCPPBKK();
+    	 var t = new CallC_BKK();
          t.init();
          System.out.println(t.check("./normal.wav"));
         

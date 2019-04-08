@@ -1,18 +1,17 @@
 package service;
 import Message.BKKCheck.InputMessage;
-import Message.BKKCheck.ResponceMessage;
 import Message.abstractions.BinaryMessage;
 import Table.TablesEBSCheck;
 import impl.JAktor;
-import jna_impl.RawImplements.CallCPPBKK;
+import jna_impl.RawImplements.CallC_BKK;
 import java.io.File;
 import java.io.IOException;
 
 public class Service_JAKtor extends JAktor {
     TablesEBSCheck tebs = new TablesEBSCheck();
-    private CallCPPBKK Bkkwrapper;
+    private CallC_BKK Bkkwrapper;
     public Service_JAKtor(){
-        this.Bkkwrapper = new CallCPPBKK();
+        this.Bkkwrapper = new CallC_BKK();
         Bkkwrapper.init();
     };
 

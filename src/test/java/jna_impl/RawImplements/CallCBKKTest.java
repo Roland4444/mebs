@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CallCPPBKKTest {
+class CallCBKKTest {
 
     @Test
     void check() {
-        var t = new CallCPPBKK();
+        var t = new CallC_BKK();
         t.init();
         assertEquals(0, t.check("./lol2.wav"));
     }
 
     @Test
     void getStr() {
-        var f = new CallCPPBKK();
+        var f = new CallC_BKK();
         assertEquals("Example", f.getStr());
     }
 }
