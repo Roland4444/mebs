@@ -1,5 +1,6 @@
 package service;
 import Message.BKKCheck.InputMessage;
+import Message.BKKCheck.ResponceMessage;
 import Message.abstractions.BinaryMessage;
 import Table.TablesEBSCheck;
 import impl.JAktor;
@@ -29,8 +30,14 @@ public class Service_JAKtor extends JAktor {
         var shortname = new File(filename).getName();
         var ID = inputMsg.ID;
         BinaryMessage.write(inputMsg.fileContent, shortname);
-      //////////////////  var resp = new ResponceMessage(Bkkwrapper.check(filename), ID);
-        send(BinaryMessage.savedToBLOB(null), inputMsg.Address);
+        int res = Bkkwrapper.check(filename);
+        var resp = new ResponceMessage(res, ID);
+        if ((res != 0) && (shortname.indexOf(".wav")<0))
+        {
+            resp.ProblemName=Bkkwrapper.getProblemPhotoName();
+            resp.problemValue=Bkkwrapper.getProblemPhotoValue();
+        }
+        send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
         //new File(shortname).delete();
     }
 
