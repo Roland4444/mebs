@@ -13,4 +13,9 @@ class CallCPPBKKTest {
         assertEquals(0, t.check("./lol2.wav"));
     }
 
+    @Test
+    void getStr() {
+        var f = new CallCPPBKK();
+        assertEquals("Example", f.getStr());
+    }
 }

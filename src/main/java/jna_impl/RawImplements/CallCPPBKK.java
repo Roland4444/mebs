@@ -11,10 +11,16 @@ public class CallCPPBKK {
         void initGlobal();
         int checkFileGlobal(String filename);
         double getPhotoProblemValueGlobal();
+        String getPhotoProblemNameGlobal();
+        String sendExampleString();
     }
 
     public void init(){
         CLibrary.INSTANCE.initGlobal();
+    }
+
+    public String getStr(){
+        return CLibrary.INSTANCE.sendExampleString();
     }
 
     public int check(String Filename){
@@ -25,6 +31,10 @@ public class CallCPPBKK {
 
     public double getProblemPhotoValue(){
         return CLibrary.INSTANCE.getPhotoProblemValueGlobal();
+    }
+
+    public String getProblemPhotoName(){
+        return CLibrary.INSTANCE.getPhotoProblemNameGlobal();
     }
     
     public static void main(String[] args) {
