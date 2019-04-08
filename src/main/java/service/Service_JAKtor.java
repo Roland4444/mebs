@@ -34,11 +34,21 @@ public class Service_JAKtor extends JAktor {
         var resp = new ResponceMessage(res, ID);
         if ((res != 0) && (shortname.indexOf(".wav")<0))
         {
-            resp.ProblemName=Bkkwrapper.getProblemPhotoName();
-            resp.problemValue=Bkkwrapper.getProblemPhotoValue();
+            System.out.println("Problem founded>>\n");
+            String problemParam = Bkkwrapper.getProblemPhotoName();
+            Double probValue = Bkkwrapper.getProblemPhotoValue();
+            printProblem(problemParam, probValue);
+            resp.ProblemName = problemParam;
+            resp.problemValue = probValue;
         }
+        ResponceMessage.printIt(resp);
         send(BinaryMessage.savedToBLOB(resp), inputMsg.Address);
         //new File(shortname).delete();
+    }
+
+    void printProblem(String Name, Double Value){
+        System.out.println("Name=" + Name);
+        System.out.println("Name=" + Value);
     }
 
     public static void main(String[] args) throws InterruptedException {
