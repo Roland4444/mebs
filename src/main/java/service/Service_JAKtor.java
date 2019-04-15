@@ -16,13 +16,6 @@ public class Service_JAKtor extends JAktor {
         Bkkwrapper.init();
     };
 
-    String configVoice, configPhoto;
-    public void setconfigVoice(String filename){
-        this.configVoice =filename;
-    }
-    public void setconfigPhoto(String filename){
-        this.configPhoto =filename;
-    }
     @Override
     public void receive(byte[] message) throws IOException {
         InputMessage inputMsg = (InputMessage) BinaryMessage.restored(message);
@@ -54,8 +47,6 @@ public class Service_JAKtor extends JAktor {
     public static void main(String[] args) throws InterruptedException {
         var  la1=new Service_JAKtor();
         la1.setAddress("http://127.0.0.1:12128/");
-        la1.setconfigVoice("./cv_configuration.json");
-        la1.setconfigPhoto("./ci_configuration.json");
         la1.spawn();
     }
 }
